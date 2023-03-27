@@ -13,7 +13,7 @@
 %	ASSIGNMENT INFORMATION
 %----------------------------------------------------------------------------------------
 
-\title{Programming and AI} % Title of the assignment
+\title{Evolutionary Computation} % Title of the assignment
 
 %----------------------------------------------------------------------------------------
 
@@ -26,8 +26,14 @@
 	
 \maketitle % Print the title
 \tableofcontents
-\section{Supsection}
 
-\input{sections/q}
+% \input{sections/q}
+
+\foreach \i in {1, 2, 3, 4, ...,70} {%
+    \edef\FileName{sections/c\i}%     The % here are necessary to eliminate any
+    \IfFileExists{\FileName}{%  spurious spaces that may get inserted
+       \input{\FileName}%       at these points
+    }
+}
 
 \end{document}

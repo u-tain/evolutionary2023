@@ -1,4 +1,4 @@
-question_list="sections.txt"
+ question_list="sections.txt"
 
 i=0
 while read line; do
@@ -6,5 +6,3 @@ while read line; do
     header="\section{$line}"
     echo $header > "c$i.tex"
 done < $question_list
-
-echo $template > q1.tex
