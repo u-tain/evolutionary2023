@@ -1,1 +1,54 @@
+\newcommand\tab[1][1cm]{\hspace*{#1}}
 \section{Поиск с запретами.}
+\textbf{Tabu search: Поиск с запретами}\\
+Мы вычеркиваем те подмножества, которые гарантировано содержат только локальные оптимумы.\\
+Позволяет быстрее найти глобальный оптимум.\\ 
+
+\textbf{Как питаться в командировке: не ходить дважды в одно кафе}\\
+T ← {}: множество табуированных особей  \\
+L: максимальный размер множества T  \\
+function Next(x)  \\
+\tab y ← RandOMMutatIOn(x)  \\
+\tab if f (y)≥ f (x)and y !∈T then  \\
+\tab \tab T ← T ∪{y}  \\
+\tab \tab if |T | > L then  \\
+\tab \tab \tab T ← T без самого старого элемента  \\
+\tab \tab end if  \\
+\tab \tab return y  \\
+\tab end if  \\
+\tab return x  \\
+end function \\
+
+\textbf{Tabu search (обобщенный вариант)}\\
+\textbf{Как питаться в командировке: не ходить дважды в одно кафе}\\
+T \leftarrow \lbrace \rbrace: \text{множество табуированных особей} \\
+L: \text{максимальный размер множества T} \\
+\text{function Next(x)}  \\
+\tab y \leftarrow RandOMMutatIOn(x)  \\
+\tab if f (y) ≥ f (x) and \text{ y достаточно далеко от T then}  \\
+\tab \tab T \leftarrow T \cup {y}  \\
+\tab \tab if |T | > L then  \\
+\tab \tab \tab T \leftarrow T \text{без самого старого элемента}  \\
+\tab \tab \text{end if}  \\
+\tab \tab \text{return y}  \\
+\tab \text{end if}  \\
+\tab \text{return x}  \\
+\text{end function} \\
+
+\textbf{Tabu search: табуирование мутаций} \\ 
+Генерируем выборку с неким табу. Накладываем условия на тех потомков, которые генерируем (к примеру закон распределения или область определения). \\
+\textbf{Как правильно переходить Рубикон} \\
+T \leftarrow \lbrace \rbrace: \text{множество табуированных мутаций} \\
+L: \text{максимальный размер множества T} \\
+function Next(x)  \\
+\tab m \leftarrow ChOOSERandOMMutatIOnExcept(T); y \leftarrow m(x)  \\
+\tab if f (y) \ge f (x) then  \\
+\tab \tab T \leftarrow T \cup { m^{(-1)}} \\ 
+\tab \tab if |T| > L then \\ 
+\tab \tab \tab T \leftarrow T \text{ без самого старого элемента}  \\
+\tab \tab \text{end if}  \\
+\tab \tab \text{return y}  \\
+\tab \text{end if}  \\
+\tab \text{return x}  \\
+\text{end function}  \\
+
