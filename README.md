@@ -4,7 +4,7 @@
 
 1. Делай fork репозитория
 
-2. Помечай билет, который пишешь в табличке
+2. Помечай билет, который пишешь в [табличке](https://docs.google.com/spreadsheets/d/1sdpVqki0HvD0xWJcWJ_IekWQomlJnJwVrIsnJTQ4Z3w/edit?usp=sharing)
 
 3. push в свой репозиторий
 
