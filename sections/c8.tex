@@ -9,9 +9,9 @@
 - Конец = улучшение достигнутого (exploitation) \\
 - Параметр t: «температура», зависит от номера итерации, управляет балансом exploration/exploitation \\
 
-function N e x t(x,t)  \\
+function Next($x,t$)  \\
 \tab y ← RandOMMutatIOn(x)  \\ 
-\tab if f (y) ≥ f (x) or RandOM(0,1) < exp((f (y)-f (x))/t) then \\ 
+\tab if f (y) $\ge$ f (x) or RandOM(0,1) $\le$ $exp((f (y)-f (x))/t)$ then \\ 
 \tab \tab return y  \\
 \tab end if  \\
 \tab return x  \\
