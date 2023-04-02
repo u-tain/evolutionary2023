@@ -1,1 +1,112 @@
+\newcommand\tab[1][1cm]{\hspace*{#1}}
 \section{FAHC, SAHC, RMHC.}
+
+Как можно улучшить применение алгоритма, то есть снизить негативное влияние на те случаи, которые вызывают трудности при оптимизации локальным оптимизатором (методами спуска).\\
+\\
+Нам нужно произвести список всех локальных изменений, мутаций. То есть, есть какое-то начальное решение и вычисляем функцию на этом решении. \\ 
+\\
+\textbf{First ascent hill climber: применение первого улучшения}
+\\
+M ← список всех локальных изменений («мутаций») \\
+\\
+Формируем список локальных изменений путем периодизации 
+вычислений функции на множестве начальных решений. \\
+\\
+function N e x t(x)  \\
+\tab for m \leftarrow M do  \\
+\tab \tab y \leftarrow m(x)  \\
+\tab \tab Вычислить f на y  \\
+\tab \tab if f (y) > f (x) then  \\
+\tab \tab \tab return y  \\
+\tab \tab end if \\ 
+\tab end for  \\
+\tab return x  \\
+end function  \\
+
+x ← случайное начальное решение  \\
+Вычислить f на x  \\
+while x недостаточно хорошее и еще есть  время do  \\
+\tab x \leftarrow N e x t(x)  \\
+end while  \\
+return x \\ 
+
+\textbf{Steepest ascent HC: применение лучшего улучшения}\\
+M ← список всех локальных изменений («мутаций»)
+\\
+function N e x t(x)  \\
+\tab v \leftarrow x   \\
+\tab for m \leftarrow M do  \\
+\tab \tab y \leftarrow m(x)  \\
+\tab \tab Вычислить f на y \\ 
+\tab \tab if f (y) > f (v) then \\  
+\tab \tab \tab v \leftarrow y \\  
+\tab \tab end if \\ 
+\tab end for \\ 
+\tab return v \\ 
+end function \\ 
+\\
+x \leftarrow случайное начальное решение  \\
+Вычислить f на x  \\
+while x недостаточно хорошее и еще есть  \\
+время do  \\
+\tab x \leftarrow N e x t(x)\\
+end while   \\
+return x\\ 
+
+\textbf{Random mutation HC: первое случайное улучшение}\\
+M ← список всех локальных изменений («мутаций») \\
+\\
+function N e x t(x)  \\
+\tab for m \leftarrow Shuffle(M) do\\  
+\tab \tab y \leftarrow m(x)\\  
+\tab \tab Вычислить f на y\\  
+\tab \tab if f (y) > f (x) then\\  
+\tab \tab \tab return y\\   
+\tab \tab end if\\  
+\tab end for\\  
+\tab return x\\  
+end function \\ 
+\\
+x \leftarrow случайное начальное решение\\  
+Вычислить f на x\\  
+while x недостаточно хорошее и еще есть\\  
+время do \\ 
+\tab x \leftarrow N e x t(x)\\  
+end while \\
+ return x \\
+\\
+\textbf{Пример задачи:}\\
+Максимизируемая функция: сумма ASCII-кодов\\
+Начальное решение: для простоты AAAA...A\\
+Искомый оптимум: очевидно, ZZZZ...Z\\
+Список мутаций M: «установить первую букву в A», «установить первую букву в B», ..., «установить вторую букву в A» ...\\
+Мы просто переберем те значения, которые нам доступны из всего множества кодов, запустив случайный выбор. \\
+Размер строки N, размер алфавита \Sigma \\
+
+\textbf{Сколько в среднем вычислений функции требуется для нахождения оптимума?}\\
+FAHC: ((\Sigma +2)(\Sigma-1)N(N+1))/(2*2)\\
+SAHC: \Sigma N^2 \\
+RMHC: O(\Sigma N log⁡(\Sigma N) ) ≤ \Sigma N*\Sigma N/i\\
+
+\textbf{Randomized Local Search: упрощенная версия RMHC}\\
+M ← список всех локальных изменений («мутаций») \\
+
+Работам не с одним значением, а с вектором значений, который получен на начальном этапе генерации мутаций. \\
+\\
+function Next(x)  \\
+\tab m \leftarrow случайная мутация из M  \\
+\tab y \leftarrow m(x)  \\
+\tab Вычислить f на y  \\
+\tab if f (y) > f (x) then  \\
+\tab\tab return y  \\
+\tab end if  \\
+\tab return x  \\
+end function  \\
+\\
+x \leftarrow случайное начальное решение  \\
+Вычислить f на x  \\
+while x недостаточно хорошее и еще есть  \\
+время do  \\
+\tab x \leftarrow Next(x)  \\
+end while   \\
+return x \\
