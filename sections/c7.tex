@@ -9,8 +9,8 @@
 - Каждая строка может быть превращена в каждую с ненулевой вероятностью \\
 Мутация становится псевдослучайной.\\
 function Next(x)  \\
-y \leftarrow RandOMMutatIOn(x)  \\
-\tab \text{if f (y) ≥ f (x) then} \\ 
+y $\leftarrow$ RandOMMutatIOn(x)  \\
+\tab {if f (y) $\ge$ f (x) then} \\ 
 \tab \tab \text{return y } \\
 \tab \text{end if } \\
 \tab \text{return x}  \\
@@ -20,7 +20,7 @@ y \leftarrow RandOMMutatIOn(x)  \\
 Над строками длиной N: заменить каждый символ с вероятностью 1/N \\
 
 То же самое, что: \\
-- Выбрать число замен l ∼ B(N,1/N), где B — биномиальное распределение  \\
+- Выбрать число замен $l  B(N,1/N)$, где B — биномиальное распределение  \\
 - Выбрать случайное подмножество индексов размера l и заменить там символы (Сначала генерируем индексы, а потом заменяем индексы на символы, делая нашу мутацию более похожей на глобальную)\\
 \\
 \textbf{Преимущества: \\}
@@ -32,8 +32,8 @@ y \leftarrow RandOMMutatIOn(x)  \\
 \\
 \textbf{Оператор мутации по степенному закону \\}
 Стандартный вариант \\
-- Выбрать число c ∈[1..N] с вероятностью, пропорциональной c в ^ {- \beta} , где \beta ∈ (1;2) — константный параметр \\
-- Заменить каждый символ с вероятностью c/N\\ 
+- Выбрать число $c \le [1..N]$ с вероятностью, пропорциональной $c ^ {- \beta}$ , где $\beta \le (1;2)$ — константный параметр \\
+- Заменить каждый символ с вероятностью $c/N$\\ 
 \\
 Альтернативный  упрощенный  вариант \\
 - Выбрать c как описано выше, далее заменять c символов на случайно выбранных позициях \\
@@ -53,14 +53,14 @@ y \leftarrow RandOMMutatIOn(x)  \\
 Нужно ставить ограничение на число итераций.\\
 \\
 function Next(x)  \\
-\tab $y_i$ \leftarrow $RandOMMutatIOn(x)$ \text{для каждого} $i$ \in [1;λ]  \\
+\tab $y_i$ $\leftarrow$ $RandOMMutatIOn(x)$ \text{для каждого} $i$ $\in [1;\lambda]$  \\
 \tab $y = y_1$   \\
-\tab for i \in [2;λ] do  \\
-\tab \tab if f (y_i) > f (y) then  \\
-\tab \tab \taby \leftarrow y_i   \\
+\tab for i $\in$ $[2;\lambda]$ do  \\
+\tab \tab if f ($y_i$) > f ($y$) then  \\
+\tab \tab \tab $y$ $\leftarrow$ $y_i$   \\
 \tab \tab end if \\ 
 \tab end for  \\
-\tab if f (y) ≥ f (x) then \\
+\tab if f (y) $\le$ f (x) then \\
 \tab \tab return y  \\
 \tab end if  \\
 \tab return x  \\
@@ -71,11 +71,11 @@ end function \\
 - Лучший потомок заменяет родителя, если он не хуже \\
 \\
 function Next(x)  \\
-\tab y_i \leftarrow RandOMMutatIOn(x) \text{ для каждого i} \in [1;\lambda]  \\
-\tab y = y_1  \\
-\tab for i \in [2;\lambda] do  \\
-\tab \tab if f (y_i) > f (y) then  \\
-\tab \tab \tab y \leftarrow y_i   \\
+\tab $y_i$ $\leftarrow$ RandOMMutatIOn(x) \text{ для каждого i} $\in [1;\lambda]$  \\
+\tab y = $y_i$  \\
+\tab for i $\in [2;\lambda]$ do  \\
+\tab \tab if f ($y_i$) > f (y) then  \\
+\tab \tab \tab y $\leftarrow$ $y_i$   \\
 \tab \tab end if  \\
 \tab end for  \\
 \tab return y  \\
@@ -83,14 +83,14 @@ end function \\
 \\
 \textbf{Используем локальный поиск, перезапускаемся при его окончании \\}
 \\
-x \leftarrow случайное решение  \\
-b \leftarrow x \\ 
+x $\leftarrow$ случайное решение  \\
+b $\leftarrow$ x \\ 
 while b недостаточно хорошее и еще есть время do \\
-\tab y \leftarrow LOCALSeaRCh(x)  \\
+\tab y $\leftarrow$ LOCALSeaRCh(x)  \\
 \tab if f (y) > f (b) then  \\
-\tab \tab b \leftarrow y  \\
+\tab \tab b $\leftarrow$ y  \\
 \tab end if  \\
-\tab x \leftarrow случайное решение  \\
+\tab x $\leftarrow$ случайное решение  \\
 end while\\
 return b\\
 
