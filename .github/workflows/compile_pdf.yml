@@ -2,9 +2,9 @@ name: Compile PDF
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main" , "workflow_dispatch"]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main" , "workflow_dispatch"]
 
 jobs:
   build_latex:
