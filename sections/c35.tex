@@ -16,7 +16,7 @@
     \begin{itemize}
         \item Параметры: минимальное допустимое расстояние $\sigma$, функция расстояния $d(i, j)$
         \item«Sharing function»: $s(i,j) = 1 - \frac{d(i,j)}{\sigma}^\alpha$ если $d(i,j)< \sigma$, иначе 0
-        \item Пересчет приспособленности: $F'(i) = \frac{\Sigma F(i)^\beta}{_js(i,j)}$
+        \item Пересчет приспособленности: $F'(i) = \frac{F(i)^\beta}{\sum_j s(i,j)}$
     \end{itemize}
     \item \textbf{«Crowding»}: приспособленность не меняется, меняется оператор отбора 
     \begin{itemize}

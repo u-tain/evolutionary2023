@@ -27,7 +27,7 @@ L: \text{максимальный размер множества T} \\
 \tab y $\leftarrow$ RandOMMutatIOn(x)  \\
 \tab if f (y) $\ge$ f (x) and \text{ y достаточно далеко от T then}  \\
 \tab \tab T $\leftarrow$ T $\cup$ {y}  \\
-\tab \tab if |T | $\ge$ L then  \\
+\tab \tab if |T| $>$ L then  \\
 \tab \tab \tab T $\leftarrow$ T \text{без самого старого элемента}  \\
 \tab \tab \text{end if}  \\
 \tab \tab \text{return y}  \\
@@ -44,7 +44,7 @@ function Next(x)  \\
 \tab m $\leftarrow$ ChOOSERandOMMutatIOnExcept(T); y $\leftarrow$ m(x)  \\
 \tab if f (y) $\ge$ f (x) then  \\
 \tab \tab T $\leftarrow$ T $\cup$ { $m^{(-1)}$} \\ 
-\tab \tab if |T| $\le$ L then \\ 
+\tab \tab if |T| > L then \\ 
 \tab \tab \tab T $\leftarrow$ T \text{ без самого старого элемента}  \\
 \tab \tab \text{end if}  \\
 \tab \tab \text{return y}  \\
